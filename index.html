@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Clover — Suerte descentralizada</title>
+  <meta name="description" content="The Clover: la criptomoneda del trébol de cuatro hojas. Descentralizada, rápida, segura y global. Explora la moneda y pregúntale a Clover AI.">
+  <meta name="theme-color" content="#030806">
+  <link rel="icon" href="assets/clover-mark.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+
+  <!-- Escena WebGL de la moneda (decorativa; el contenido vive en HTML) -->
+  <div class="stage" aria-hidden="true">
+    <canvas id="coin-canvas"></canvas>
+    <img class="stage__fallback" src="assets/moneda-neon-b.jpg" alt="">
+  </div>
+  <!-- Lluvia de monedas al hacer scroll -->
+  <canvas id="coin-rain" aria-hidden="true"></canvas>
+
+  <header class="nav">
+    <a class="nav__brand" href="#top" aria-label="The Clover, inicio">
+      <img src="assets/clover-mark.png" alt="" width="34" height="35">
+      <span>The Clover</span>
+    </a>
+    <nav class="nav__links" aria-label="Secciones">
+      <a href="#anatomia">La moneda</a>
+      <a href="#cadena">Blockchain</a>
+      <a href="#pilares">Pilares</a>
+      <a href="#token">Token</a>
+      <a href="#ruta">Ruta</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="btn btn--ghost nav__ai" type="button" data-open-chat>Clover AI</button>
+  </header>
+
+  <main id="main">
+    <!-- 1 · PORTADA -->
+    <section class="hero" id="top">
+      <div class="hero__copy">
+        <h1 class="visually-hidden">The Clover</h1>
+        <img class="hero__logo" src="assets/clover-logo.png" alt="Logo de The Clover: trébol de cuatro hojas en neón verde" width="1020" height="1140">
+        <p class="hero__tag">Suerte descentralizada.</p>
+        <p class="hero__lead">Una criptomoneda con forma de trébol: cuatro hojas, cuatro pilares. Gira la moneda con el scroll, mira cómo se encadena cada bloque y pregúntale lo que quieras a Clover AI.</p>
+        <div class="hero__ctas">
+          <button class="btn btn--neon" type="button" data-open-chat>Preguntar a Clover AI</button>
+          <a class="btn btn--ghost" href="#anatomia">Ver la moneda</a>
+        </div>
+      </div>
+      <p class="hero__scroll" aria-hidden="true"><span></span>Baja — y mira caer las monedas</p>
+    </section>
+
+    <!-- 2 · ANATOMÍA (escena fijada, la moneda gira) -->
+    <section class="anatomy" id="anatomia" aria-labelledby="anatomia-t">
+      <div class="anatomy__pin">
+        <div class="anatomy__head">
+          <p class="eyebrow">01 · La moneda</p>
+          <h2 id="anatomia-t">Acuñada en luz y oro.</h2>
+        </div>
+        <ol class="callouts">
+          <li class="callout" data-step="0" style="--x:68%;--y:24%"><b>Anillo de oro</b><span>“The Clover” grabado en el canto superior.</span></li>
+          <li class="callout" data-step="1" style="--x:12%;--y:44%"><b>Trébol de neón</b><span>El logo original, intacto, encendido en el centro.</span></li>
+          <li class="callout" data-step="2" style="--x:70%;--y:62%"><b>Circuito</b><span>Las pistas que conectan cada hoja con la red.</span></li>
+          <li class="callout" data-step="3" style="--x:14%;--y:76%"><b>Fast · Secure · Global</b><span>Los pilares, escritos alrededor del borde.</span></li>
+          <li class="callout callout--wide" data-step="4" style="--x:50%;--y:86%"><b>El reverso</b><span>Una cara de oro macizo con el trébol en relieve.</span></li>
+        </ol>
+        <div class="anatomy__bar" aria-hidden="true"><i></i></div>
+      </div>
+    </section>
+
+    <!-- 3 · CADENA (las monedas se apilan en bloques) -->
+    <section class="chain" id="cadena" aria-labelledby="cadena-t">
+      <div class="chain__pin">
+        <div class="chain__copy">
+          <p class="eyebrow">02 · Blockchain</p>
+          <h2 id="cadena-t">Cada moneda, un bloque. Cada bloque, sellado al anterior.</h2>
+          <ol class="chain__steps">
+            <li data-chain="0"><b>Transacción</b> Alguien envía The Clover. La operación se firma con su clave privada.</li>
+            <li data-chain="1"><b>Bloque</b> Los nodos agrupan transacciones y calculan una huella única: el hash.</li>
+            <li data-chain="2"><b>Cadena</b> Cada bloque guarda el hash del anterior. Cambiar uno rompería todos los de arriba.</li>
+            <li data-chain="3"><b>Consenso</b> Miles de copias coinciden. Nadie, por sí solo, puede reescribir el historial.</li>
+          </ol>
+        </div>
+        <div class="chain__hashes" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- 4 · PILARES (las cuatro hojas se encienden) -->
+    <section class="pillars" id="pilares" aria-labelledby="pilares-t">
+      <div class="pillars__pin">
+        <p class="eyebrow">03 · Cuatro hojas</p>
+        <h2 id="pilares-t" class="pillars__title">Una hoja por promesa.</h2>
+        <div class="leaf-stage">
+          <div class="leaf-art" aria-hidden="true">
+            <div class="leaf-coin">
+              <img class="leaf-coin__base" src="assets/coins/coin-13.webp" alt="" width="1100" height="1100" loading="lazy">
+              <img class="leaf-glow" data-leaf="0" src="assets/coins/coin-13.webp" alt="" width="1100" height="1100" loading="lazy">
+              <img class="leaf-glow" data-leaf="1" src="assets/coins/coin-13.webp" alt="" width="1100" height="1100" loading="lazy">
+              <img class="leaf-glow" data-leaf="2" src="assets/coins/coin-13.webp" alt="" width="1100" height="1100" loading="lazy">
+              <img class="leaf-glow" data-leaf="3" src="assets/coins/coin-13.webp" alt="" width="1100" height="1100" loading="lazy">
+              <i class="leaf-coin__shine"></i>
+            </div>
+          </div>
+          <article class="leaf" data-leaf="0"><span>I</span><h3>Descentralizada</h3><p>La red no depende de un servidor ni de una empresa. La sostienen los nodos que la ejecutan.</p></article>
+          <article class="leaf" data-leaf="1"><span>II</span><h3>Rápida</h3><p>Pensada para confirmar envíos sin esperar días ni pasar por intermediarios.</p></article>
+          <article class="leaf" data-leaf="2"><span>III</span><h3>Segura</h3><p>Firmas criptográficas y un registro público que cualquiera puede verificar.</p></article>
+          <article class="leaf" data-leaf="3"><span>IV</span><h3>Global</h3><p>Sin fronteras ni horarios: basta una billetera y conexión a internet.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · GALERÍA (desplazamiento horizontal) -->
+    <section class="reel" id="galeria" aria-labelledby="galeria-t">
+      <div class="reel__pin">
+        <!-- moneda-dorada.png es una captura de video (botón de play y subtítulo): sirvió de referencia para el reverso 3D, no se muestra. -->
+        <div class="reel__head">
+          <p class="eyebrow">04 · Colección</p>
+          <h2 id="galeria-t">Una misma hoja, en cada acuñación.</h2>
+        </div>
+        <div class="reel__track">
+          <figure class="reel__item" data-motion="spin">
+            <div class="reel__frame"><img src="assets/coins/coin-16.webp" alt="Moneda The Clover de oro girando entre estelas de luz verde" loading="lazy" width="1100" height="1100"></div>
+            <figcaption><b>En órbita</b> La moneda gira entre estelas de neón.</figcaption>
+          </figure>
+          <figure class="reel__item" data-motion="rise">
+            <div class="reel__frame"><img src="assets/coins/coin-10.webp" alt="Pila de monedas The Clover con una moneda apoyada de canto" loading="lazy" width="1100" height="1100"></div>
+            <figcaption><b>La pila</b> Bloque sobre bloque, como la cadena.</figcaption>
+          </figure>
+          <figure class="reel__item" data-motion="float">
+            <div class="reel__frame"><img src="assets/coins/coin-14.webp" alt="Tres monedas The Clover flotando en el aire" loading="lazy" width="1100" height="1100"></div>
+            <figcaption><b>En el aire</b> Tres monedas, una misma hoja.</figcaption>
+          </figure>
+          <figure class="reel__item" data-motion="zoom">
+            <div class="reel__frame"><img src="assets/coins/coin-15.webp" alt="Primer plano del trébol de neón en relieve sobre el circuito de oro" loading="lazy" width="1100" height="1100"></div>
+            <figcaption><b>Detalle</b> Trébol en relieve sobre circuito de oro.</figcaption>
+          </figure>
+          <figure class="reel__item" data-motion="tilt">
+            <div class="reel__frame"><img src="assets/coins/coin-17.webp" alt="Moneda The Clover con el nombre repetido alrededor del borde" loading="lazy" width="1100" height="1100"></div>
+            <figcaption><b>Canto grabado</b> The Clover alrededor de todo el borde.</figcaption>
+          </figure>
+          <figure class="reel__item" data-motion="spin">
+            <div class="reel__frame"><img src="assets/coins/coin-12.webp" alt="Moneda The Clover inclinada con canto estriado" loading="lazy" width="1100" height="1100"></div>
+            <figcaption><b>De perfil</b> El canto estriado atrapa la luz.</figcaption>
+          </figure>
+        </div>
+        <p class="reel__note">Imágenes conceptuales de la marca. No representan una moneda física a la venta.</p>
+      </div>
+    </section>
+
+    <!-- 6 · DATOS DEL TOKEN -->
+    <section class="token" id="token" aria-labelledby="token-t">
+      <div class="token__grid">
+        <div>
+          <p class="eyebrow">05 · Token</p>
+          <h2 id="token-t">Lo que está confirmado, y lo que no.</h2>
+          <p class="token__lead">Preferimos un dato vacío a uno inventado. Estos campos se completarán cuando el equipo publique el lanzamiento oficial. Hasta entonces, cualquier contrato que circule <strong>no es oficial</strong>.</p>
+        </div>
+        <dl class="ledger">
+          <div><dt>Nombre</dt><dd>The Clover</dd></div>
+          <div><dt>Símbolo</dt><dd class="pending">Por confirmar</dd></div>
+          <div><dt>Red</dt><dd class="pending">Por confirmar</dd></div>
+          <div><dt>Suministro total</dt><dd class="pending">Por confirmar</dd></div>
+          <div><dt>Contrato</dt><dd class="pending">Se publicará aquí</dd></div>
+        </dl>
+      </div>
+      <ol class="howto" aria-label="Cómo prepararte para el lanzamiento">
+        <li><b>01</b><h3>Crea tu billetera</h3><p>Una de autocustodia, compatible con la red que se anuncie.</p></li>
+        <li><b>02</b><h3>Guarda la frase semilla</h3><p>En papel, offline. Nadie del equipo te la pedirá jamás.</p></li>
+        <li><b>03</b><h3>Verifica el contrato</h3><p>Copia la dirección solo desde esta web o los canales oficiales.</p></li>
+        <li><b>04</b><h3>Pregunta antes</h3><p>Clover AI te explica cada paso si algo no está claro.</p></li>
+      </ol>
+    </section>
+
+    <!-- 7 · HOJA DE RUTA -->
+    <section class="road" id="ruta" aria-labelledby="ruta-t">
+      <p class="eyebrow">06 · Hoja de ruta</p>
+      <h2 id="ruta-t">De semilla a trébol.</h2>
+      <p class="road__note">Propuesta de fases. Las fechas las anunciará el equipo.</p>
+      <div class="road__line">
+        <svg class="road__stem" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C 200 10, 300 110, 500 60 S 800 10, 1000 60"/></svg>
+        <ol>
+          <li><span class="phase">Fase 1</span><h3>Semilla</h3><p>Identidad, web y comunidad fundadora.</p></li>
+          <li><span class="phase">Fase 2</span><h3>Brote</h3><p>Lanzamiento del token y contrato verificado públicamente.</p></li>
+          <li><span class="phase">Fase 3</span><h3>Hojas</h3><p>Utilidades, alianzas y herramientas para holders.</p></li>
+          <li><span class="phase">Fase 4</span><h3>Trébol completo</h3><p>Expansión global y gobernanza de la comunidad.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 8 · FAQ + IA -->
+    <section class="faq" id="faq" aria-labelledby="faq-t">
+      <div class="faq__intro">
+        <p class="eyebrow">07 · Preguntas</p>
+        <h2 id="faq-t">¿Dudas? El trébol responde.</h2>
+        <p>Clover AI conoce el proyecto, explica conceptos cripto en lenguaje sencillo y te avisa cuando un dato aún no es oficial.</p>
+        <button class="btn btn--neon" type="button" data-open-chat>Abrir Clover AI</button>
+      </div>
+      <div class="faq__list" id="faq-list"></div>
+    </section>
+
+    <aside class="risk" aria-label="Aviso de riesgo">
+      <p><strong>Aviso:</strong> las criptomonedas son activos de alto riesgo y muy volátiles. Nada en esta web es asesoría financiera. Invierte solo lo que puedas permitirte perder.</p>
+    </aside>
+  </main>
+
+  <footer class="foot">
+    <img src="assets/clover-logo.png" alt="The Clover" width="1020" height="1140" loading="lazy">
+    <p>Canales oficiales: se publicarán aquí. Desconfía de cualquier otro enlace.</p>
+    <p class="foot__small">© 2026 The Clover · Web conceptual</p>
+  </footer>
+
+  <!-- CLOVER AI -->
+  <button class="chat-fab" type="button" data-open-chat aria-label="Abrir Clover AI" aria-controls="chat" aria-expanded="false">
+    <img src="assets/clover-mark.png" alt="" width="40" height="42">
+  </button>
+  <section class="chat" id="chat" role="dialog" aria-modal="false" aria-labelledby="chat-title" hidden>
+    <header class="chat__head">
+      <img src="assets/clover-mark.png" alt="" width="30" height="31">
+      <div>
+        <h2 id="chat-title">Clover AI</h2>
+        <p class="chat__status" id="chat-status">Conectando…</p>
+      </div>
+      <button class="chat__close" type="button" aria-label="Cerrar chat" data-close-chat>×</button>
+    </header>
+    <div class="chat__log" id="chat-log" role="log" aria-live="polite"></div>
+    <div class="chat__chips" id="chat-chips"></div>
+    <form class="chat__form" id="chat-form">
+      <label class="visually-hidden" for="chat-input">Escribe tu pregunta</label>
+      <input id="chat-input" name="q" autocomplete="off" maxlength="600" placeholder="Pregunta sobre The Clover…">
+      <button class="btn btn--neon" type="submit">Enviar</button>
+    </form>
+    <p class="chat__legal">No es asesoría financiera. Nunca compartas tu frase semilla.</p>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
